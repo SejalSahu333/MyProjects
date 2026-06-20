@@ -71,7 +71,7 @@ Verify that Apache server is running and MySQL database is connected.
 ```
 
 ### ❌ Database Error Response
-**Status Code:** `200 OK` (API runs but DB fails)
+**Status Code:** `500 OK` (API runs but DB fails)
 ```json
 {
   "success": true,
