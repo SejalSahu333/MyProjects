@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify OTP — AuthSystem</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .otp-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 24px 0;
+        }
+        .otp-input {
+            width: 48px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            outline: none;
+            transition: all var(--transition);
+        }
+        .otp-input:focus {
+            border-color: var(--accent-1);
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+        .otp-input.invalid {
+            border-color: var(--error);
+            background: rgba(239, 68, 68, 0.06);
+        }
+        .timer-container {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .timer {
+            font-weight: 700;
+            color: var(--accent-3);
+            font-variant-numeric: tabular-nums;
+        }
+        .resend-btn {
+            background: none;
+            border: none;
+            color: var(--accent-1);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 8px;
+            opacity: 0.5;
+            pointer-events: none;
+            text-decoration: underline;
+        }
+        .resend-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .resend-btn.active:hover {
+            color: var(--accent-3);
+        }
+        .display-email {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="auth-card">
+        <!-- Brand -->
+        <div class="brand">
+            <div class="brand-icon">🔐</div>
+            <span class="brand-name">AuthSystem</span>
+        </div>
+
+        <!-- Header -->
+        <div class="auth-header">
+            <h1>Enter OTP</h1>
+            <p>We've sent a 6-digit code to <br><span class="display-email" id="displayEmail">your email</span>.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Alert Box -->
+        <div class="alert alert-success" id="alertSuccess" role="alert">
+            <span class="alert-icon">✅</span>
+            <span id="alertSuccessMsg">OTP verified! Redirecting...</span>
+        </div>
+        <div class="alert alert-error" id="alertError" role="alert">
+            <span class="alert-icon">⚠️</span>
+            <span id="alertErrorMsg">Invalid OTP.</span>
+        </div>
+
+        <!-- Verify OTP Form -->
+        <form id="verifyForm" novalidate>
+            
+            <div class="otp-container" id="otpContainer">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required />
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required />
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required />
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required />
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required />
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required />
+            </div>
+
+            <div class="timer-container">
+                Time remaining: <span class="timer" id="timer">10:00</span>
+                <button type="button" class="resend-btn" id="resendBtn">Resend OTP</button>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-primary" id="submitBtn">
+                <span class="btn-text">
+                    <span class="spinner" id="spinner"></span>
+                    <span class="btn-label">Verify OTP →</span>
+                </span>
+            </button>
+        </form>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+            <a href="forgot-password.html">← Back to Email Input</a>
+        </div>
+    </div>
+</div>
+
+<script src="js/verify-otp.js"></script>
+</body>
+</html>

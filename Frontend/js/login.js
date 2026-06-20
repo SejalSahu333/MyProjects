@@ -130,11 +130,7 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-// ── Forgot Password placeholder ───────────────────────────
-document.getElementById('forgotLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    showAlert('error', '🔧 Forgot password feature coming soon!');
-});
+
 
 // ── Auto-fill from URL param (after registration redirect) ─
 const params = new URLSearchParams(window.location.search);

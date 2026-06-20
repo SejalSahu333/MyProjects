@@ -104,7 +104,7 @@ Accept user's email → Generate 6-digit OTP → Send OTP via Resend.com email
   "message": "If this email is registered, an OTP has been sent."
 }
 ```
-> ✅ Same response as registered email — this prevents **email enumeration attacks**.  
+> ✅ Same response as registered email — tthis prevens **email enumeration attacks**.  
 > No OTP is sent for unregistered emails.
 
 ---
