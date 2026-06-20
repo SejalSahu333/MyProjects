@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In — AuthSystem</title>
+    <meta name="description" content="Sign in to your AuthSystem account securely." />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="auth-card">
+
+        <!-- Brand -->
+        <div class="brand">
+            <div class="brand-icon">🔐</div>
+            <span class="brand-name">AuthSystem</span>
+        </div>
+
+        <!-- Header -->
+        <div class="auth-header">
+            <h1>Welcome Back</h1>
+            <p>Sign in to your account to continue.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Alert Box -->
+        <div class="alert alert-success" id="alertSuccess" role="alert">
+            <span class="alert-icon">✅</span>
+            <span id="alertSuccessMsg">Login successful! Redirecting…</span>
+        </div>
+        <div class="alert alert-error" id="alertError" role="alert">
+            <span class="alert-icon">⚠️</span>
+            <span id="alertErrorMsg">Invalid credentials.</span>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" novalidate>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉️</span>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="john@example.com"
+                        autocomplete="email"
+                        required
+                    />
+                </div>
+                <p class="field-error" id="emailError">⚡ Please enter a valid email address.</p>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔑</span>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-control has-toggle"
+                        placeholder="Your password"
+                        autocomplete="current-password"
+                        required
+                    />
+                    <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">👁️</button>
+                </div>
+                <p class="field-error" id="passwordError">⚡ Password is required.</p>
+            </div>
+
+            <!-- Forgot password link -->
+            <div style="text-align:right; margin-top: -8px; margin-bottom: 20px;">
+                <a href="#" style="font-size:13px; color:var(--accent-1); text-decoration:none; font-weight:600;" id="forgotLink">Forgot password?</a>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-primary" id="submitBtn">
+                <span class="btn-text">
+                    <span class="spinner" id="spinner"></span>
+                    <span class="btn-label">Sign In →</span>
+                </span>
+            </button>
+
+        </form>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+            Don't have an account? <a href="register.html" id="registerLink">Create one</a>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

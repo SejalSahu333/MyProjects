@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account — AuthSystem</title>
+    <meta name="description" content="Create a new account on AuthSystem. It's free and takes only a moment." />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="auth-card">
+
+        <!-- Brand -->
+        <div class="brand">
+            <div class="brand-icon">🔐</div>
+            <span class="brand-name">AuthSystem</span>
+        </div>
+
+        <!-- Header -->
+        <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Join us today — it's free and only takes a minute.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Alert Box -->
+        <div class="alert alert-success" id="alertSuccess" role="alert">
+            <span class="alert-icon">✅</span>
+            <span id="alertSuccessMsg">Account created successfully!</span>
+        </div>
+        <div class="alert alert-error" id="alertError" role="alert">
+            <span class="alert-icon">⚠️</span>
+            <span id="alertErrorMsg">Something went wrong.</span>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="registerForm" novalidate>
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label class="form-label" for="fullName">Full Name</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="full_name"
+                        class="form-control"
+                        placeholder="John Doe"
+                        autocomplete="name"
+                        required
+                    />
+                </div>
+                <p class="field-error" id="fullNameError">⚡ Please enter your full name (min 3 characters).</p>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉️</span>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="john@example.com"
+                        autocomplete="email"
+                        required
+                    />
+                </div>
+                <p class="field-error" id="emailError">⚡ Please enter a valid email address.</p>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔑</span>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-control has-toggle"
+                        placeholder="Min 8 chars, 1 uppercase, 1 number"
+                        autocomplete="new-password"
+                        required
+                    />
+                    <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">👁️</button>
+                </div>
+                <!-- Strength meter -->
+                <div class="strength-bar-wrap" id="strengthBar">
+                    <div class="strength-segment" id="seg1"></div>
+                    <div class="strength-segment" id="seg2"></div>
+                    <div class="strength-segment" id="seg3"></div>
+                    <div class="strength-segment" id="seg4"></div>
+                </div>
+                <p class="strength-label" id="strengthLabel"></p>
+                <p class="field-error" id="passwordError">⚡ Password must be 8+ chars with uppercase & number.</p>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label class="form-label" for="confirmPassword">Confirm Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirm_password"
+                        class="form-control has-toggle"
+                        placeholder="Repeat your password"
+                        autocomplete="new-password"
+                        required
+                    />
+                    <button type="button" class="toggle-password" id="toggleConfirm" aria-label="Toggle confirm password visibility">👁️</button>
+                </div>
+                <p class="field-error" id="confirmPasswordError">⚡ Passwords do not match.</p>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-primary" id="submitBtn">
+                <span class="btn-text">
+                    <span class="spinner" id="spinner"></span>
+                    <span class="btn-label">Create Account →</span>
+                </span>
+            </button>
+
+        </form>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+            Already have an account? <a href="login.html" id="loginLink">Sign In</a>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/register.js"></script>
+</body>
+</html>

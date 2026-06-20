@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — AuthSystem</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .dashboard-card { max-width: 520px; }
+        .welcome-avatar {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 32px rgba(99,102,241,0.4);
+        }
+        .user-name  { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+        .user-email { font-size: 14px; color: var(--text-secondary); }
+        .info-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+        .info-tile  {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+        }
+        .info-tile-icon  { font-size: 24px; margin-bottom: 8px; }
+        .info-tile-label { font-size: 12px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .info-tile-value { font-size: 14px; color: var(--text-primary); font-weight: 600; margin-top: 4px; }
+        .btn-logout {
+            width: 100%; padding: 13px 24px;
+            background: rgba(239,68,68,0.12);
+            border: 1px solid rgba(239,68,68,0.35);
+            border-radius: var(--radius-md);
+            color: #fca5a5;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px; font-weight: 700;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+        }
+        .btn-logout:hover { background: rgba(239,68,68,0.22); transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="auth-card dashboard-card">
+        <div class="brand">
+            <div class="brand-icon">🔐</div>
+            <span class="brand-name">AuthSystem</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="auth-header">
+            <div class="welcome-avatar" id="avatarEmoji">😊</div>
+            <p class="user-name" id="userName">Loading…</p>
+            <p class="user-email" id="userEmail">…</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-tile">
+                <div class="info-tile-icon">🎉</div>
+                <div class="info-tile-label">Status</div>
+                <div class="info-tile-value" style="color:var(--success);">Authenticated</div>
+            </div>
+            <div class="info-tile">
+                <div class="info-tile-icon">🆔</div>
+                <div class="info-tile-label">User ID</div>
+                <div class="info-tile-value" id="userId">—</div>
+            </div>
+        </div>
+
+        <button class="btn-logout" id="logoutBtn">🚪 Sign Out</button>
+
+        <div class="auth-footer" style="margin-top:20px;">
+            You are securely logged in.
+        </div>
+    </div>
+</div>
+<script>
+    const user = JSON.parse(localStorage.getItem('auth_user') || 'null');
+    if (!user) { window.location.href = 'login.html'; }
+    else {
+        document.getElementById('userName').textContent  = user.full_name;
+        document.getElementById('userEmail').textContent = user.email;
+        document.getElementById('userId').textContent    = '#' + user.id;
+        document.title = 'Dashboard — ' + user.full_name;
+    }
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_user');
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>
