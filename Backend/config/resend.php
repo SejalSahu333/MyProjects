@@ -1,6 +1,7 @@
 <?php
 // Resend.com Email API Configuration
-define('RESEND_API_KEY', 're_3bG7X8pc_C1dhD8FLWFs6MVok3dTJ7YER'); // TODO: Add your Resend.com API Key here
+require_once __DIR__ . '/env.php';
+
 define('RESEND_FROM_EMAIL', 'onboarding@resend.dev'); // Default for free plan 
 define('RESEND_FROM_NAME', 'AuthSystem');
 
@@ -21,13 +22,15 @@ function sendEmail(string $toEmail, string $subject, string $htmlBody): bool
         'html' => $htmlBody,
     ];
 
+    $apiKey = getenv('RESEND_API_KEY') ?: '';
+
     $ch = curl_init('https://api.resend.com/emails');
     curl_setopt_array($ch, [
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => json_encode($payload),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HTTPHEADER => [
-            'Authorization: Bearer ' . RESEND_API_KEY,
+            'Authorization: Bearer ' . $apiKey,
             'Content-Type: application/json',
         ],
     ]);

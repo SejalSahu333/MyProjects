@@ -93,7 +93,7 @@ $htmlBody = '
 
 // Send Email via Resend
 // Note: In development, if RESEND_API_KEY is not set, we'll just log success to not break the flow
-if (RESEND_API_KEY !== 're_YOUR_API_KEY_HERE') {
+if (getenv('RESEND_API_KEY') && getenv('RESEND_API_KEY') !== 're_YOUR_API_KEY_HERE') {
     sendEmail($email, "Your Password Reset OTP - AuthSystem", $htmlBody);
 }
 
